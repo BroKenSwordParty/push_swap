@@ -6,7 +6,7 @@
 /*   By: jchamorr <jchamorr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 18:50:21 by jchamorr          #+#    #+#             */
-/*   Updated: 2022/10/31 13:51:04 by jchamorr         ###   ########.fr       */
+/*   Updated: 2022/11/22 16:19:01 by jchamorr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,11 @@ void	check_args(t_push *s, char *s1) //                                        1
 		i++;
 	}
 }
+
+
+
+
+
 
 void	end_point(int i)
 {

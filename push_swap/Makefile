@@ -6,7 +6,7 @@
 #    By: jchamorr <jchamorr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/20 11:34:38 by jchamorr          #+#    #+#              #
-#    Updated: 2022/10/03 11:20:01 by jchamorr         ###   ########.fr        #
+#    Updated: 2022/11/28 18:42:04 by jchamorr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ OBJS = $(SRC:.c=.o)
 
 LIBFT = libft/libft.a
 
-CC = gcc -fsanitize=address -g3
+CC = gcc #-fsanitize=address -g3
+
 FLAGS = -Wall -Wextra -Werror
 
 RM = rm -rf
