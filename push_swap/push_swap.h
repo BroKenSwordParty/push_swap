@@ -6,7 +6,7 @@
 /*   By: jchamorr <jchamorr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 18:50:29 by jchamorr          #+#    #+#             */
-/*   Updated: 2022/12/02 14:25:21 by jchamorr         ###   ########.fr       */
+/*   Updated: 2022/12/19 18:15:48 by jchamorr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,37 +22,54 @@
 typedef struct  s_stack
 {
 	int				content; // number
-	struct t_stack	*next; // pointer
+	size_t			index;	// index
+	struct s_stack	*next; // pointer
 }	t_stack;
 
 typedef struct s_push
 {
 	int			index; // nº of nbrs.
-	int			*nb; // tmp pero de números.
 	char		*arg; // argumentos
 	char		**tmp; // split del arg
 	t_stack		*a; // linked - a
 	t_stack		*b; // linked - b
-}	t_push;
-
-//Ordenar los números pequeños.
-//	Si hay 1 nº lo muestro.
-//	si hay menos de 5 nº los ordeno y muestro
+}				t_push;
 
 // HACERLO CON LINKED LIST ---- RADIX
-// Comprobar argumentos si son con comillas o no. ------------------------ DONE
+// DONE -- Comprobar argumentos si son con comillas o no.
 // DONE -- Hacer SPLIT a los números.
-// Al comprobar que es un INT Se pasa al stack B
-// Una vez tenga el STACK A,
-// Necesito que todos los números sean POSITIVOS
-// Cuantos nº me están entrando
-// Añadir un índice para eliminar los nº negativos.
+// DONE -- Una vez tenga el STACK A,
+// DONE -- Cuantos nº me están entrando e indexarlos.
+// DONE -- Si solo hay un número STOP.
+// DONE -- Si hay 2 números ordenar
+// Si hay 3 números ordenar
+// Si hay 4 númeors ordenar
+// Si hay 5 números ordenar
+// Si hay entre 5 y 100 hacer ALGORITMO_1
+// Si hay entre 100 y 500 hacer ALGORITMO_2
 // Buscar lo que hace & (Geeks4geeks, cuál es el bit mas importante seteado).
 
-void	check_args(t_push *s);
+//------ MAIN FTS ----------//
 void	end_point(int i);
+void	check_args(t_push *s);
 void	join_args(t_push *s, char **av);
+void	fill_stacks(t_push *s);
 int		negative_numbers(char *num);
+void	ft_insert_nbr(t_stack **stack_a, int nbr);
+void	ft_insert_nbr_empty(t_stack **stack_a, int nbr);
+void	check_and_order(t_push *s);
+//------ ORDER FTS ----------//
+void	hardcoded_ordering(t_push *s);
+void	swap_a(t_stack *stack_a);
+void	swap_b(t_stack *stack_b);
+void	swap_stack(t_stack *stack);
+void	swap_a_swap_b(t_stack *stack_a, t_stack *stack_b);
+void	push(t_stack *stack_a, t_stack *stack_b);
+void	push_a(t_stack *stack_a, t_stack *stack_b);
+void	push_b(t_stack *stack_a, t_stack *stack_b);
+//------ UTILS FTS ----------//
+void	are_u_ordered_mr_stack(t_stack **stack);
+void	free_tmp(t_push *s);
 
 #endif
 

@@ -6,19 +6,24 @@
 #    By: jchamorr <jchamorr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/20 11:34:38 by jchamorr          #+#    #+#              #
-#    Updated: 2022/11/28 18:42:04 by jchamorr         ###   ########.fr        #
+#    Updated: 2022/12/19 18:52:19 by jchamorr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
 SRC = push_swap.c\
+		main_fts.c\
+		arg_checker.c\
+		order_fts.c\
+		stack_ft_calls.c\
+		utils.c\
 
 OBJS = $(SRC:.c=.o)
 
 LIBFT = libft/libft.a
 
-CC = gcc #-fsanitize=address -g3
+CC = gcc -fsanitize=address -g3
 
 FLAGS = -Wall -Wextra -Werror
 
