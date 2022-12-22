@@ -6,7 +6,7 @@
 /*   By: jchamorr <jchamorr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 18:50:29 by jchamorr          #+#    #+#             */
-/*   Updated: 2022/12/19 18:15:48 by jchamorr         ###   ########.fr       */
+/*   Updated: 2022/12/22 14:13:37 by jchamorr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@
 
 typedef struct  s_stack
 {
-	int				content; // number
+	int				nb; // number
 	size_t			index;	// index
-	struct s_stack	*next; // pointer
+	struct s_stack	*nxt; // pointer
 }	t_stack;
 
 typedef struct s_push
@@ -58,15 +58,24 @@ int		negative_numbers(char *num);
 void	ft_insert_nbr(t_stack **stack_a, int nbr);
 void	ft_insert_nbr_empty(t_stack **stack_a, int nbr);
 void	check_and_order(t_push *s);
+//---- ORDER CALL FTS --------//
+void	reverse_rotate_a(t_stack **stack_a);
+void	reverse_rotate_b(t_stack **stack_b);
+void	reverse_rotate_a_b(t_stack **stack_a, t_stack **stack_b);
+void	swap_a(t_stack **stack_a);
+void	swap_b(t_stack **stack_b);
+void	swap_a_swap_b(t_stack **stack_a, t_stack **stack_b);
+void	push_a(t_push *s);
+void	push_b(t_push *s);
+void	rotate_a(t_stack **stack);
+void	rotate_b(t_stack **stack);
+void	rotate_a_b(t_stack **stack_a, t_stack **stack_b);
 //------ ORDER FTS ----------//
 void	hardcoded_ordering(t_push *s);
-void	swap_a(t_stack *stack_a);
-void	swap_b(t_stack *stack_b);
-void	swap_stack(t_stack *stack);
-void	swap_a_swap_b(t_stack *stack_a, t_stack *stack_b);
-void	push(t_stack *stack_a, t_stack *stack_b);
-void	push_a(t_stack *stack_a, t_stack *stack_b);
-void	push_b(t_stack *stack_a, t_stack *stack_b);
+void	rotate(t_stack **stack);
+void	swap_stack(t_stack **stack);
+void	reverse_rotate(t_stack **stack);
+void	push(t_stack **stack_a, t_stack **stack_b);
 //------ UTILS FTS ----------//
 void	are_u_ordered_mr_stack(t_stack **stack);
 void	free_tmp(t_push *s);

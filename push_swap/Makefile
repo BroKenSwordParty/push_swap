@@ -6,7 +6,7 @@
 #    By: jchamorr <jchamorr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/20 11:34:38 by jchamorr          #+#    #+#              #
-#    Updated: 2022/12/19 18:52:19 by jchamorr         ###   ########.fr        #
+#    Updated: 2022/12/22 13:57:40 by jchamorr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,10 @@ SRC = push_swap.c\
 		main_fts.c\
 		arg_checker.c\
 		order_fts.c\
+		order_fts_2.c\
 		stack_ft_calls.c\
+		rotate_fts.c\
+		reverse_rotate_fts.c\
 		utils.c\
 
 OBJS = $(SRC:.c=.o)

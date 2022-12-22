@@ -6,7 +6,7 @@
 /*   By: jchamorr <jchamorr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 18:50:21 by jchamorr          #+#    #+#             */
-/*   Updated: 2022/12/19 12:46:31 by jchamorr         ###   ########.fr       */
+/*   Updated: 2022/12/22 12:34:17 by jchamorr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 void	end_point(int i)
 {
+	if (i == 0)
+	 	exit (0);
 	if (i == 1)
-		printf("%s\n", ARG_ERR);
+		ft_putstr_fd(ARG_ERR, 1);
 	if (i == 2)
-		printf("%s\n", NUM_ERR);
+		ft_putstr_fd(NUM_ERR, 1);
 	if (i == 3)
-		printf("%s\n", REP_ERR);
+		ft_putstr_fd(REP_ERR, 1);
 	exit (1);
 }
 
@@ -36,7 +38,7 @@ int	main(int ac, char **av)
 		s.arg = av[1];
 	check_args(&s);
 	fill_stacks(&s);
-	check_and_order(&s); // Mirar a ver si están ordenados e indexarlos/ordenarlos.
+	check_and_order(&s);
 	printf("Me he pasado el juego\n");
 	return (0);
 }

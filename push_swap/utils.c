@@ -6,7 +6,7 @@
 /*   By: jchamorr <jchamorr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 12:33:29 by jchamorr          #+#    #+#             */
-/*   Updated: 2022/12/16 16:02:00 by jchamorr         ###   ########.fr       */
+/*   Updated: 2022/12/22 13:02:56 by jchamorr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ void	are_u_ordered_mr_stack(t_stack **stack)
 
 	head = (*stack);
 	i = 0;
-	while (head->next != NULL)
+	while (head->nxt != NULL)
 	{
-		if (head->content > head->next->content)
+		if (head->nb > head->nxt->nb)
 		{
 			i = 1;
 			break;
 		}
-		head = head->next;
+		head = head->nxt;
 	}
 	if (i == 0)
 		end_point(0);
@@ -41,8 +41,8 @@ void	ft_insert_nbr_empty(t_stack **stack_a, int nbr)
 	new = (t_stack *)malloc(sizeof(t_stack));
 	if (!new)
 		return ;
-	new->content = nbr;
-	new->next = NULL;
+	new->nb = nbr;
+	new->nxt = NULL;
 	*stack_a = new;
 }
 
@@ -56,12 +56,12 @@ void	ft_insert_nbr(t_stack **stack_a, int nbr)
 	new = (t_stack *)malloc(sizeof(t_stack));
 	if (!new)
 		return ;
-	new->content = nbr;
-	new->next = NULL;
+	new->nb = nbr;
+	new->nxt = NULL;
 	copy = (*stack_a);
-	while (copy->next)
-		copy = copy->next;
-	copy->next = new;
+	while (copy->nxt)
+		copy = copy->nxt;
+	copy->nxt = new;
 }
 
 void	free_tmp(t_push *s)
@@ -71,15 +71,4 @@ void	free_tmp(t_push *s)
 	i = -1;
 	while (s->tmp[++i])
 		free(s->tmp[i]);
-}
-
-// Función que agrega un nuevo nodo al principio de la lista. ---------- Prob. ELIMINAR
-void	ft_insert_first(t_push *s)
-{
-	t_stack	*new;
-
-	new = (t_stack *)malloc(sizeof(t_stack)); //!!!!!HAY QUE SEGUIR POR AQUI !!!!!!!!!!!!!!!!!!!!!
-	if (!new)
-		return ;
-
 }

@@ -1,37 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_fts.c                                         :+:      :+:    :+:   */
+/*   rotate_fts.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jchamorr <jchamorr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/12 15:24:36 by jchamorr          #+#    #+#             */
-/*   Updated: 2022/12/22 13:03:08 by jchamorr         ###   ########.fr       */
+/*   Created: 2022/12/21 21:14:49 by jchamorr          #+#    #+#             */
+/*   Updated: 2022/12/22 14:18:03 by jchamorr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	fill_stacks(t_push *s)
+void	rotate_a(t_stack **stack)
 {
-	int	i;
-
-	if (s->index == 1)
-		end_point (0);
-	i = 0;
-	ft_insert_nbr_empty(&s->a, ft_atoi(s->tmp[i]));
-	while (++i < s->index )
-		ft_insert_nbr(&s->a, ft_atoi(s->tmp[i]));
-	free_tmp(s);
+	rotate(stack);
+	write(1, "ra\n", 3);
 }
 
-void	check_and_order(t_push *s)
+void	rotate_b(t_stack **stack)
 {
-	are_u_ordered_mr_stack(&s->a);
-	if (s->index <= 5)
-		hardcoded_ordering(s);
-	// if (s->index < 5 && s->index > 100)
-		//algo_rhythm_1();
-	// if (s->index <= 100)
-		//algo_rhythm_2();
+	rotate(stack);
+	write(1, "rb\n", 3);
+}
+
+void	rotate_a_b(t_stack **stack_a, t_stack **stack_b)
+{
+	rotate(stack_a);
+	rotate(stack_b);
+	write(1, "rr\n", 3);
 }
