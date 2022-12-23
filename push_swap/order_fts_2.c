@@ -6,13 +6,13 @@
 /*   By: jchamorr <jchamorr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 20:17:15 by jchamorr          #+#    #+#             */
-/*   Updated: 2022/12/22 16:36:19 by jchamorr         ###   ########.fr       */
+/*   Updated: 2022/12/23 09:43:08 by jchamorr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap_stack(t_stack **stack)
+void	swap_stack(t_stack **stack) // ESTE FUNCIONA
 {
 	t_stack	*temp;
 
@@ -23,7 +23,7 @@ void	swap_stack(t_stack **stack)
 	*stack = temp;
 }
 
-void	push(t_stack **stack_1, t_stack **stack_2)
+void	push(t_stack **stack_1, t_stack **stack_2) // ESTE FUNCIONA
 {
 	t_stack	*temp;
 
@@ -39,42 +39,30 @@ void	push(t_stack **stack_1, t_stack **stack_2)
 	(*stack_2) = temp;
 }
 
-void	rotate(t_stack **stack)
+void	rotate(t_stack **stack) // ESTE FUNCIONA
 {
 	t_stack	*temp;
 	t_stack	*head;
 
 	head = (*stack);
-	temp = (*stack)->nxt;
+	(*stack) = (*stack)->nxt;
 	head->nxt = NULL;
-	while ((*stack)->nxt != NULL)
-		(*stack) = (*stack)->nxt;
-	(*stack)->nxt = head;
-	(*stack) = temp;
+	temp = (*stack);
+	while (temp->nxt != NULL)
+		temp = temp->nxt;
+	temp->nxt = head;
 }
 
-void	reverse_rotate(t_stack **stack)
+void	reverse_rotate(t_stack **stack) // ESTE FUNCIONA
 {
 	t_stack	*head;
 
 	head = (*stack);
 	while (head->nxt->nxt != NULL)
 		head = head->nxt;
-	(*stack)->nxt->nxt = head;
-	(*stack)->nxt = NULL;
-	printf("NUMERO DE A EN WHILE %d\n", (*stack)->nb);
-	*stack = head;
-	printf("PRIMERO: %d\nSEGUNDO: %d\nTERCERO: %d\n", (*stack)->nb, (*stack)->nxt->nb, (*stack)->nxt->nxt->nb);
-	// printf("ASKDFJASLKFJASKFJASLKFJASLKFJALSKFJALSKFJ TUS MUERTOS PISAOS\n");
-	// printf("--------------------------------\n");
-	// printf("LA LISTA DESPUÉS DE SER ORDENADA\n");
-	// while (head != NULL)
-	// {
-	// 	printf("NUMERO DE A EN WHILE %d\n", head->nb);
-	// 	printf("POINTER DE A EN WHILE %p\n", head->nxt);
-	// 	head = head->nxt;
-	// }
-	exit(0);
+	head->nxt->nxt = (*stack);
+	(*stack) = head->nxt;
+	head->nxt = NULL;
 }
 
 // reverse rotate a - desplaza hacia abajo todos los elementos del stack a una

@@ -6,7 +6,7 @@
 /*   By: jchamorr <jchamorr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 09:54:25 by jchamorr          #+#    #+#             */
-/*   Updated: 2022/12/22 14:28:38 by jchamorr         ###   ########.fr       */
+/*   Updated: 2022/12/23 09:48:02 by jchamorr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,26 @@ void	lets_order_this_numbers(t_push **s)
 {
 	t_stack	*stk;
 
+	printf("PASAMOS POR AQUI\n");
 	stk = (*s)->a;
-	if (stk->nb > stk->nxt->nb && stk->nxt->nb < stk->nxt->nxt->nb)
+	if (stk->nb > stk->nxt->nb && stk->nb > stk->nxt->nxt->nb)
+		rotate_a(&(*s)->a);
+	else if (stk->nb > stk->nxt->nb && stk->nxt->nb < stk->nxt->nxt->nb)
 		swap_a(&(*s)->a);
-	if (stk->nb > stk->nxt->nb && stk->nxt->nb > stk->nxt->nxt->nb)
+	else if (stk->nb > stk->nxt->nb && stk->nxt->nb > stk->nxt->nxt->nb)
 	{
 		swap_a(&(*s)->a);
 		reverse_rotate_a(&(*s)->a);
-
 	}
-	// if (stk->nb > stk->nxt->nb && stk->nxt->nb < stk->nxt->nxt->nb)
-	// if (stk->nb < stk->nxt->nb && stk->nxt->nb > stk->nxt->nxt->nb)
-	// if (stk->nb < stk->nxt->nb && stk->nxt->nb > stk->nxt->nxt->nb)
+	else if (stk->nb < stk->nxt->nb && stk->nxt->nb > stk->nxt->nxt->nb)
+	{
+		swap_a(&(*s)->a);
+		rotate_a(&(*s)->a);
+	}
+	else if (stk->nb < stk->nxt->nb && stk->nxt->nb > stk->nxt->nxt->nb)
+		reverse_rotate_a(&(*s)->a);
+	// TENGO QUE REVISAR LOS CASOS ESPECÍFICOS PARA SER MÁS EXACTO PORQUE PUEDEN LLEGAR A FALLAR
+	// Y ENTRAR EN funciones que no son.
 }
 
 
@@ -49,7 +57,6 @@ void	hardcoded_ordering(t_push *s)
 	if (s->index == 3)
 		lets_order_this_numbers(&s);
 	prueba = s->a;
-	printf("ASJHFLAHFAHOG %d\n", s->a->nb);
 	printf("--------------------------------\n");
 	printf("LA LISTA DESPUÉS DE SER ORDENADA\n");
 	while (prueba != NULL)
