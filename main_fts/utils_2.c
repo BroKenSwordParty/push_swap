@@ -6,11 +6,19 @@
 /*   By: jchamorr <jchamorr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 13:31:08 by jchamorr          #+#    #+#             */
-/*   Updated: 2023/01/24 12:11:59 by jchamorr         ###   ########.fr       */
+/*   Updated: 2023/01/30 17:00:10 by jchamorr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+void	fix_something_you_btrd(t_push *s)
+{
+	if (s->a->size < 3 && (s->a->nb < s->a->nxt->nb))
+		end_point(s, 4);
+	if (s->a->size <= 1)
+		end_point(s, 4);
+}
 
 int	lstsize(t_stack **stk)
 {
@@ -65,4 +73,19 @@ void	index_stack(t_push *s)
 		}
 		index++;
 	}
+}
+
+void	free_stack(t_stack **stk)
+{
+	t_stack	*tmp;
+
+	if (!stk || !(*stk))
+		return ;
+	while (*stk)
+	{
+		tmp = (*stk)->nxt;
+		free(*stk);
+		*stk = tmp;
+	}
+	*stk = NULL;
 }

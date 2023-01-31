@@ -6,7 +6,7 @@
 /*   By: jchamorr <jchamorr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 16:41:15 by jchamorr          #+#    #+#             */
-/*   Updated: 2023/01/17 14:17:33 by jchamorr         ###   ########.fr       */
+/*   Updated: 2023/01/27 19:47:14 by jchamorr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,19 @@ void	check_args(t_push *s)
 	i = 0;
 	s->tmp = ft_split(s->arg, ' ');
 	if (!s->tmp)
-		end_point(1);
+		end_point(s, 1);
+	free(s->arg);
 	while (s->tmp[i])
 	{
 		if (!negative_numbers(s->tmp[i]))
-			end_point(1);
+			end_point(s, 1);
 		if (s->tmp[i + 1] == NULL)
 			break ;
 		j = i + 1;
 		while (s->tmp[j])
 		{
 			if (ft_strcmp(s->tmp[i], s->tmp[j]) == 0)
-				end_point (3);
+				end_point(s, 3);
 			j++;
 		}
 		i++;
@@ -42,10 +43,16 @@ void	check_args(t_push *s)
 int	negative_numbers(char *num)
 {
 	int		i;
+	char	*holder;
 
 	i = 0;
-	if (ft_strcmp(ft_itoa(ft_atoi(num)), num) != 0)
+	holder = ft_itoa(ft_atoi(num));
+	if (ft_strcmp(holder, num) != 0)
+	{
+		free(holder);
 		return (0);
+	}
+	free(holder);
 	if (num[i] == '-')
 		i++;
 	while (num[i])
@@ -57,18 +64,24 @@ int	negative_numbers(char *num)
 	return (1);
 }
 
-void	join_args(t_push *s, char **av)
+char	*join_args(char **av)
 {
 	int		i;
 	char	*tmp;
+	char	*tmp2;
+	char	*holder;
 
 	i = 0;
-	s->arg = ft_strdup("");
+	holder = ft_strdup("");
 	while (av[i])
 	{
+		tmp2 = ft_strdup(holder);
+		free(holder);
 		tmp = ft_strjoin(&av[i][0], " ");
-		s->arg = ft_strjoin(s->arg, tmp);
+		holder = ft_strjoin(tmp2, tmp);
+		free(tmp2);
 		i++;
+		free(tmp);
 	}
-	free (tmp);
+	return (holder);
 }

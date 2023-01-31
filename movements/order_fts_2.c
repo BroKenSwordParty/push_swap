@@ -6,7 +6,7 @@
 /*   By: jchamorr <jchamorr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 20:17:15 by jchamorr          #+#    #+#             */
-/*   Updated: 2023/01/19 17:16:17 by jchamorr         ###   ########.fr       */
+/*   Updated: 2023/01/25 20:51:28 by jchamorr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@ void	push(t_stack **stack_1, t_stack **stack_2)
 	if ((*stack_2) == NULL)
 	{
 		ft_insert_nbr_empty(stack_2, (*stack_1)->nb, (*stack_1)->index);
+		temp = (*stack_1);
 		(*stack_1) = (*stack_1)->nxt;
+		free(temp);
 		return ;
 	}
 	temp = (*stack_1);

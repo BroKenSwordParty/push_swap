@@ -6,7 +6,7 @@
 /*   By: jchamorr <jchamorr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 18:50:29 by jchamorr          #+#    #+#             */
-/*   Updated: 2023/01/24 12:28:14 by jchamorr         ###   ########.fr       */
+/*   Updated: 2023/01/27 20:27:15 by jchamorr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,22 +29,22 @@ typedef struct s_stack
 
 typedef struct s_push
 {
-	int			index;
-	int			limits[2];
-	char		*arg;
-	char		**tmp;
-	t_stack		*a;
-	t_stack		*b;
-}				t_push;
+	int		index;
+	int		limits[2];
+	char	*arg;
+	char	**tmp;
+	t_stack	*a;
+	t_stack	*b;
+}			t_push;
 
 //------ MAIN FTS ----------//
-void	end_point(int i);
+void	end_point(t_push *s, int i);
+char	*join_args(char **av);
 void	check_args(t_push *s);
 void	fill_stacks(t_push *s);
 void	index_stack(t_push *s);
 void	check_and_order(t_push *s);
 int		negative_numbers(char *num);
-void	join_args(t_push *s, char **av);
 void	ft_insert_nbr(t_stack **stack_a, int nbr);
 void	ft_insert_nbr_empty(t_stack **stack_a, int nbr, int ind);
 //---- ALGORITHMS --------//
@@ -73,8 +73,10 @@ void	free_tmp(t_push *s);
 int		lstsize(t_stack **s);
 void	find_limits(t_push *s);
 void	push_smaller(t_push *s);
+void	free_stack(t_stack **stk);
 int		get_max_bits(t_stack **stk);
 void	push_smaller_to_a(t_push *s);
+void	fix_something_you_btrd(t_push *s);
 void	are_u_ordered_mr_stack(t_stack **stack);
 
 #endif

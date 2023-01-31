@@ -6,7 +6,7 @@
 #    By: jchamorr <jchamorr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/20 11:34:38 by jchamorr          #+#    #+#              #
-#    Updated: 2023/01/24 12:33:29 by jchamorr         ###   ########.fr        #
+#    Updated: 2023/01/30 18:06:03 by jchamorr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,13 +23,12 @@ SRC = main_fts/push_swap.c\
 		movements/rotate_fts.c\
 		movements/reverse_rotate_fts.c\
 		algorithm/algorithm_1.c\
-		ft_print_stacks.c\
 
 OBJS = $(SRC:.c=.o)
 
 LIBFT = libft/libft.a
 
-CC = gcc #-fsanitize=address -g3
+CC = gcc -g3 #-fsanitize=address
 
 FLAGS = -Wall -Wextra -Werror
 
